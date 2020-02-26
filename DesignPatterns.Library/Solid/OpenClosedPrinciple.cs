@@ -20,41 +20,7 @@ namespace DesignPatterns.Library.Solid
             }
         }
 
-        public class ProductFilter
-        {
-            public IEnumerable<Product> FilterByColor(IEnumerable<Product> products, ColorType color)
-            {
-                foreach (var p in products)
-                    if (p.Color == color)
-                        yield return p;
-            }
-
-            public static IEnumerable<Product> FilterBySize(IEnumerable<Product> products, SizeType size)
-            {
-                foreach (var p in products)
-                    if (p.Size == size)
-                        yield return p;
-            }
-
-            public static IEnumerable<Product> FilterBySizeAndColor(IEnumerable<Product> products, SizeType size, ColorType color)
-            {
-                foreach (var p in products)
-                    if (p.Size == size && p.Color == color)
-                        yield return p;
-            } 
-        }
-
-        public interface ISpecification<T>
-        {
-            bool IsSatisfied(Product p);
-        }
-
-        public interface IFilter<T>
-        {
-            IEnumerable<T> Filter(IEnumerable<T> items, ISpecification<T> spec);
-        }
-
-        public class ColorSpecification : ISpecification<Product>
+         public class ColorSpecification : ISpecification<Product>
         {
             private ColorType color;
 
@@ -84,10 +50,12 @@ namespace DesignPatterns.Library.Solid
             }
         }
 
-        // combinator
         public class AndSpecification<T> : ISpecification<T>
         {
             private ISpecification<T> first, second;
+
+
+            
 
             public AndSpecification(ISpecification<T> first, ISpecification<T> second)
             {
