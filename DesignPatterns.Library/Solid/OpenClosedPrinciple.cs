@@ -11,12 +11,14 @@ namespace DesignPatterns.Library.Solid
             public string Name;
             public ColorType Color;
             public SizeType Size;
+            public int Price;
 
-            public Product(string name, ColorType color, SizeType size)
+            public Product(string name, int price, ColorType color, SizeType size)
             {
                 Name = name;
                 Color = color;
                 Size = size;
+                Price = price;
             }
         }
 
@@ -50,22 +52,36 @@ namespace DesignPatterns.Library.Solid
             }
         }
 
-        public class AndSpecification<T> : ISpecification<T>
+        public class PriceSpecification : ISpecification<Product>
         {
-            private ISpecification<T> first, second;
+            private int price;
 
-
-            
-
-            public AndSpecification(ISpecification<T> first, ISpecification<T> second)
+            public PriceSpecification(int price)
             {
-                this.first = first ?? throw new ArgumentNullException(paramName: nameof(first));
-                this.second = second ?? throw new ArgumentNullException(paramName: nameof(second));
+                this.price = price;
             }
 
             public bool IsSatisfied(Product p)
             {
-                return first.IsSatisfied(p) && second.IsSatisfied(p);
+                return p.Price == price;
+            }
+        }
+
+        public class TreeSpecification<T> : ISpecification<T>
+        {
+            private ISpecification<T> first, second, third;
+
+            public bool IsSatisfied(Product p)
+            {
+                return first.IsSatisfied(p) && second.IsSatisfied(p) && third.IsSatisfied(p);
+            }
+
+
+            public TreeSpecification(ISpecification<T> first, ISpecification<T> second, ISpecification<T> third)
+            {
+                this.first = first ?? throw new ArgumentNullException(paramName: nameof(first));
+                this.second = second ?? throw new ArgumentNullException(paramName: nameof(second));
+                this.third = third ?? throw new ArgumentNullException(paramName: nameof(third));
             }
         }
 
