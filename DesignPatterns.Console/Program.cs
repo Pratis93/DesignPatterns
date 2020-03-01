@@ -1,8 +1,7 @@
-﻿
-using DesignPatterns.Library.Solid;
-using static System.Console;
+﻿using DesignPatterns.Library.Solid;
+using DesignPatterns.Library.Constants;
 using DesignPatterns.Library.Enums;
-
+using static System.Console;
 
 namespace DesignPatterns.Console
 {
@@ -10,13 +9,11 @@ namespace DesignPatterns.Console
     {
         static void Main(string[] args)
         {
-            var apple = new OpenClosedPrinciple.Product("Apple", 5, ColorType.Green, SizeType.Small);
-            var tree = new OpenClosedPrinciple.Product("Tree",2, ColorType.Green, SizeType.Large);
-            var house = new OpenClosedPrinciple.Product("House", 15, ColorType.Blue, SizeType.Large);
+            int searchPrice = DesignConstant.Cost_15;
 
-            int searchPrice = 13; 
-
-                                 
+           var apple = new OpenClosedPrinciple.Product(DesignConstant.Apple, DesignConstant.Cost_5, ColorType.Green, SizeType.Small);
+           var tree = new OpenClosedPrinciple.Product(DesignConstant.Tree, DesignConstant.Cost_10, ColorType.Green, SizeType.Large);
+           var house = new OpenClosedPrinciple.Product(DesignConstant.Hause, DesignConstant.Cost_15, ColorType.Blue, SizeType.Large);
            OpenClosedPrinciple.Product[] products = { apple, tree, house };
 
             var bf = new OpenClosedPrinciple.BetterFilter();
@@ -36,17 +33,13 @@ namespace DesignPatterns.Console
               new OpenClosedPrinciple.SizeSpecification(SizeType.Large)
               )))
             {
-                if (p.Name == null)
-                {
-                    WriteLine($"No items");
-                    var a = ReadLine();
-                }
-                else
-                {
-                    WriteLine($" - {p.Name} is big and blue and cost 15");
-                    var a = ReadLine();
-                }
+                var ab = ReadLine();
             }
+            
+                
+                  
+               
+            
         }
     }
 }
