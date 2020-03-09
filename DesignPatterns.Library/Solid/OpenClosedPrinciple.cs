@@ -4,7 +4,38 @@ using DesignPatterns.Library.Enums;
 
 namespace DesignPatterns.Library.Solid
 {
-    public class OpenClosedPrinciple
+
+    //MainMenu
+//    int searchPrice = DesignConstant.Cost_15;
+
+//    var apple = new OpenClosedPrinciple.Product(DesignConstant.Apple, DesignConstant.Cost_5, ColorType.Green, SizeType.Small);
+//    var tree = new OpenClosedPrinciple.Product(DesignConstant.Tree, DesignConstant.Cost_10, ColorType.Green, SizeType.Large);
+//    var house = new OpenClosedPrinciple.Product(DesignConstant.Hause, DesignConstant.Cost_15, ColorType.Blue, SizeType.Large);
+//    OpenClosedPrinciple.Product[] products = { apple, tree, house };
+
+//    var bf = new OpenClosedPrinciple.BetterFilter();
+//    WriteLine("Green products (new):");
+//            foreach (var p in bf.Filter(products, new OpenClosedPrinciple.ColorSpecification(ColorType.Green)))
+//                WriteLine($" - {p.Name} is green");
+
+//    WriteLine("Large products");
+//            foreach (var p in bf.Filter(products, new OpenClosedPrinciple.SizeSpecification(SizeType.Large)))
+//                WriteLine($" - {p.Name} is large");
+
+//    WriteLine("Large blue items");
+
+            
+//                foreach (var p in bf.Filter(products,
+//              new OpenClosedPrinciple.TreeSpecification<OpenClosedPrinciple.Product>
+//              (new OpenClosedPrinciple.PriceSpecification(searchPrice),
+//              new OpenClosedPrinciple.ColorSpecification(ColorType.Red),
+//              new OpenClosedPrinciple.SizeSpecification(SizeType.Large)
+//              )))
+//                {
+//                    var ab = ReadLine();
+//}
+
+public class OpenClosedPrinciple
     {
         public class Product
         {
@@ -92,7 +123,6 @@ namespace DesignPatterns.Library.Solid
                 foreach (var i in items)
                     if (spec.IsSatisfied(i))
                         yield return i;
-
             }
         }
     }
